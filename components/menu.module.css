@@ -1,0 +1,17 @@
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 0.5em 1em 1em 0.5em;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.8);
+    border-right: 1px solid rgba(245, 245, 245, 0.8);
+    border-bottom-right-radius: 2em;
+    z-index: 1;
+    background-color: rgb(47, 79, 79);
+    /* background-color: black; */
+
+    transition: 0.3s;
+    
+}
+  
