@@ -7,14 +7,15 @@ import { getSortedPostsData } from '../lib/posts';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
+  const firstPosts = allPostsData.slice(0, 5);
   return {
     props: {
-      allPostsData
+      firstPosts
     }
   }
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ firstPosts }) {
   return (
     <Layout home>
       <Head>
@@ -24,9 +25,9 @@ export default function Home({ allPostsData }) {
         <p>My name is Mitchell 'Zyrn' Lee and I have a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className={utilStyles.headingLg}>Recent Blog Posts</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {firstPosts.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href="/blog/[id]" as={`/blog/${id}`}>
                 <a>{title}</a>
