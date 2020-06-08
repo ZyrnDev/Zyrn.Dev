@@ -10,7 +10,7 @@ class MenuContent extends Component {
       { name: 'Home', path: "/" },
       { name: 'Blog', path: "/blog" },
       { name: 'Contact', path: "/contact" },
-      { name: 'Test', path: "/test" },
+      // { name: 'Test', path: "/test" },
     ];
 
   }
