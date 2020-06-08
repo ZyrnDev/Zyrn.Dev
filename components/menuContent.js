@@ -9,6 +9,7 @@ class MenuContent extends Component {
     this.menuLinks = [
       { name: 'Home', path: "/" },
       { name: 'Blog', path: "/blog" },
+      { name: 'Contact', path: "/contact" },
       { name: 'Test', path: "/test" },
     ];
 
@@ -16,7 +17,7 @@ class MenuContent extends Component {
 
   render() {
     return (
-      <div className={styles['menu']}>
+      <div className={styles.menu}>
         {this.menuLinks.map(link => <div className={styles['menu-item']} key={link.name}>
           <Link href={link.path}>
             <a onClick={this.props.closeCallback}>
@@ -25,8 +26,8 @@ class MenuContent extends Component {
           </Link>
         </div>)}
 
-        <div className={styles['hint']}>
-          Click outside the menu to close it, or swipe it closed on touch device
+        <div className={styles.hint}>
+          
         </div>
       </div>
     )
