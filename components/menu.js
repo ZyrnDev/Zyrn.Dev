@@ -25,7 +25,6 @@ class Menu extends Component {
 
   handleScroll(event) {
       let currentPosition = window.scrollY;
-      //this.state.lastPosition
       if (currentPosition > this.state.lastPosition) {
         this.setState({iconPosition: 'absolute'});
       } else {

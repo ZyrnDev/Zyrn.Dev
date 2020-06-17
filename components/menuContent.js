@@ -9,6 +9,7 @@ class MenuContent extends Component {
     this.menuLinks = [
       { name: 'Home', path: "/" },
       { name: 'Blog', path: "/blog" },
+      { name: 'Files', path: "/files" },
       { name: 'Contact', path: "/contact" },
       // { name: 'Test', path: "/test" },
     ];
