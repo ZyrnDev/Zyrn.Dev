@@ -17,10 +17,8 @@ export default function Test({ data }) {
     <Layout>
       Uploads Page
       {data.map((name) => (
-            <div key={name}>
-              <Link href={`/uploads/${name}`}>
-                <a>{name}</a>
-              </Link>
+          <div key={name}>
+              <a href={`https://cdn.zyrn.dev/uploads/${name}`}>{name}</a>
           </div>
           ))}
     </Layout>
