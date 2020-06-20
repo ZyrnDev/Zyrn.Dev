@@ -41,13 +41,15 @@ class FileUpload extends Component {
   
         let request = axios.post(url, formData, config);
 
+        NotificationManager.info("Upload Started", fileName);
+
         request.then((response) => {
             console.log(response.data);
-            NotificationManager.success("Uploaded Successfully", fileName, 100000);
+            NotificationManager.success("Uploaded Successfully", fileName);
         })
         .catch(error => {
             console.log(error.response);
-            NotificationManager.error("Upload Failed", fileName, 100000);
+            NotificationManager.error("Upload Failed", fileName);
         });
     }
     
@@ -56,13 +58,13 @@ class FileUpload extends Component {
         <>
           <form onSubmit={this.onFormSubmit} className={styles.form}>
             <div>
-              <label for="upload-file" className={styles.label}>{this.state.filename}</label>
+              <label htmlFor="upload-file" className={styles.label}>{this.state.filename}</label>
               <input id="upload-file" type="file" onChange={this.onChange} className={styles.file} />
             </div>
             <button type="submit" className={styles.button}>Upload</button>
           </form>
           <link rel="stylesheet" type="text/css" href="/css/notifications.css"></link>
-          <script src="https://kit.fontawesome.com/4ccef4426b.js" crossorigin="anonymous"></script>
+          <script src="https://kit.fontawesome.com/4ccef4426b.js" crossOrigin="anonymous"></script>
           <NotificationContainer/>
         </>
       )

@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Menu from '../components/menu';
 
-const name = 'Mitchell Lee'
-export const siteTitle = 'Zyrn.Dev | Mitchell Lee'
+export const name = 'Mitchell Lee'
+export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
 
 export default function Layout({ children, home }) {
   return (
@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header className={styles.header}>
-          {home ? (
+          {home && (
             <>
               <img
                 src="/images/pfp.png"
@@ -35,33 +35,9 @@ export default function Layout({ children, home }) {
               />
               <h1 className={utilStyles.heading2Xl}>{name}</h1>
             </>
-          ) : (
-            <>
-              <Link href="/">
-                <a>
-                  <img
-                    src="/images/pfp.png"
-                    className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                    alt={name}
-                  />
-                </a>
-              </Link>
-              <h2 className={utilStyles.headingLg}>
-                <Link href="/">
-                  <a className={utilStyles.colorInherit}>{name}</a>
-                </Link>
-              </h2>
-            </>
           )}
         </header>
         <main>{children}</main>
-        {!home && (
-          <div className={styles.backToHome}>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
-          </div>
-        )}
       </div>
     </>
   )

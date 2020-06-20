@@ -1,0 +1,9 @@
+.file {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid white;
+    border-radius: 0.5em;
+    text-align: center;
+    font-size: 1.1em;
+    padding-bottom: 0.5em;
+}

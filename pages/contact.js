@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Contact | Zyrn.Dev</title>
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Contact:</h2>
