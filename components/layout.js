@@ -20,7 +20,7 @@ export default function Layout({ children, home }) {
           />
           <meta
             property="og:image"
-            content="/images/pfp.png"
+            content="/images/pfp.webp"
           />
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
@@ -29,7 +29,7 @@ export default function Layout({ children, home }) {
           {home && (
             <>
               <img
-                src="/images/pfp.png"
+                src="/images/pfp.webp"
                 className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                 alt={name}
               />

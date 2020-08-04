@@ -34,7 +34,7 @@ export default function Post({ postData }) {
         <Link href="/blog">
           <a>
             <img
-              src="/images/pfp.png"
+              src="/images/pfp.webp"
               className={`${layoutStyles.headerImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
