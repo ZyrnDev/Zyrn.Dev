@@ -1,11 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../components/layout';
+import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 
 export default function Contact() {
+  let meta = {
+    title: "Contact Me",
+    description: "How to contact me: Mitchell 'Zyrn' Lee",
+    //image: "/images/pfp.webp",
+  };
   return (
-    <Layout home>
+    <Layout meta={meta} home>
       <Head>
         <title>Contact | Zyrn.Dev</title>
       </Head>

@@ -5,9 +5,13 @@ import Link from "next/link";
 import Head from "next/head";
 
 export default function Files() {
+  let meta = {
+    title: "Mitchell 'Zyrn' Lee's File Server",
+    description: "A place where you can download files from your friends and family.",
+    //image: "/images/pfp.webp",
+  };
   return (
-
-    <Layout>
+    <Layout meta={meta}>
       <Head>
           <title>Files | Zyrn.Dev</title>
       </Head>

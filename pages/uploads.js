@@ -30,8 +30,13 @@ async function getFiles(directory) {
 }
 
 export default function Uploads({ files }) {
+  let meta = {
+    title: "Mitchell 'Zyrn' Lee's File Server",
+    description: "A place where you can upload files to get around upload size restrictions.",
+    //image: "/images/pfp.webp",
+  };
   return (
-    <Layout>
+    <Layout meta={meta}>
       <Head>
           <title>Uploads | Zyrn.Dev</title>
       </Head>

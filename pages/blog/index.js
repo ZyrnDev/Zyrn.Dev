@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Date from '../../components/date';
-import Layout, { siteTitle } from '../../components/layout';
+import Layout from '../../components/layout';
 import utilStyles from '../../styles/utils.module.css';
 import { getSortedPostsData } from '../../lib/posts';
 
@@ -15,8 +15,13 @@ export async function getStaticProps() {
 }
 
 export default function Blog({ allPostsData }) {
+  let meta = {
+    title: "Mitchell 'Zyrn' Lee's Blog",
+    description: "A place where Mitchell 'Zyrn' Lee talks about his recent projects.",
+    //image: "/images/pfp.webp",
+  };
   return (
-    <Layout home>
+    <Layout meta={meta} home>
       <Head>
         <title>Blog | Zyrn.Dev</title>
       </Head>

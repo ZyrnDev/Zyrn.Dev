@@ -7,22 +7,17 @@ import Menu from '../components/menu';
 export const name = 'Mitchell Lee'
 export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, meta, home }) {
+  meta = meta || {};
   return (
     <>
       <Menu/>
       <div className={styles.container}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="description"
-            content="Zyrn.Dev - we have file sharing, blog posts and more coming soon!"
-          />
-          <meta
-            property="og:image"
-            content="/images/pfp.webp"
-          />
-          <meta name="og:title" content={siteTitle} />
+          <meta name="og:title" content={ meta.title || "Mitchell Lee | Zyrn.Dev" } />
+          <meta name="description" content={ meta.description || "The home for Mitchell 'Zyrn' Lee. A passionate software developer." } />
+          <meta property="og:image" content={ meta.image || "/images/pfp.webp" } />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header className={styles.header}>

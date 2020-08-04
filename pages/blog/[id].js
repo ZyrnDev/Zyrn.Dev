@@ -24,8 +24,13 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData }) {
+  let meta = {
+    title: postData.title,
+    description: "An article about my projects working called '" + postData.title + "'.",
+    //image: "/images/pfp.webp",
+  };
   return (
-    <Layout>
+    <Layout meta={meta}>
       <Head>
         <title>{postData.title}</title>
       </Head>
