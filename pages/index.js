@@ -27,13 +27,13 @@ export default function Home({ firstPosts }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-      <p>My name is Mitchell 'Zyrn' Lee and I am a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
+      <p style={{marginBottom: "0"}}>My name is Mitchell 'Zyrn' Lee and I am a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Recent Blog Posts</h2>
         <ul className={utilStyles.list}>
-          {firstPosts.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+          {firstPosts.map(({ id, date, title }, index) => (
+            <li className={utilStyles.listItem} style={(index == firstPosts.length-1) ? {margin: "0"} : {}}key={id}>
               <Link href="/blog/[id]" as={`/blog/${id}`}>
                 <a>{title}</a>
               </Link>
@@ -41,8 +41,13 @@ export default function Home({ firstPosts }) {
               <small className={utilStyles.lightText}>
                 <Date dateString={date} />
               </small>
-          </li>
+            </li>
           ))}
+          <li key="blog" style={{marginTop: "0.125rem"}}>
+            <Link href="/blog/">
+              <a><small>See all posts</small></a>
+            </Link>
+          </li>
         </ul>
       </section>
     </Layout>
