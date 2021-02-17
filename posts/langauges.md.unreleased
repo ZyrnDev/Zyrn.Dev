@@ -1,9 +1,9 @@
 ---
-title: 'Langauges'
+title: 'Say What?'
 date: '2021-01-25'
 ---
 
-
+For me this month has had a big focus on langauges, compiliers and eco-systems. 
 ```rust
 pub fn test(input: String) {
 }
