@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+![CI](https://github.com/ZyrnDev/Zyrn.Dev/workflows/CI/badge.svg)
