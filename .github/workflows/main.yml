@@ -38,4 +38,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git fetch origin && git reset --hard origin/main && git pull && sudo npm install && sudo npm run build && sudo systemctl restart nextjs.service
+          script: cd ${{ secrets.PROJECT_PATH }} && git fetch origin && git reset --hard origin/master && git pull && sudo npm install && sudo npm run build && sudo systemctl restart nextjs.service
