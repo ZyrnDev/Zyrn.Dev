@@ -10,7 +10,7 @@ class Menu extends Component {
 
     this.state = {
       menuOpen: false,
-      iconPosition: 'fixed',
+      hidden: false,
       lastPosition: 0,
     }
   }
@@ -24,13 +24,13 @@ class Menu extends Component {
   }
 
   handleScroll(event) {
-      let currentPosition = window.scrollY;
-      if (currentPosition > this.state.lastPosition) {
-        this.setState({iconPosition: 'absolute'});
-      } else {
-        this.setState({iconPosition: 'fixed'});
-      }
-      this.setState({lastPosition: currentPosition});
+      // let currentPosition = window.scrollY;
+      // if (currentPosition > this.state.lastPosition) {
+      //   this.setState({hidden: false});
+      // } else {
+      //   this.setState({hidden: true});
+      // }
+      // this.setState({lastPosition: currentPosition});
   }
 
   openMenu() {
@@ -49,7 +49,7 @@ class Menu extends Component {
         <MenuContent closeCallback={this.closeMenu.bind(this)}/>
       </CheeseburgerMenu>
       
-      <div className={styles.menu} onClick={this.openMenu.bind(this)} style={{position: this.state.iconPosition}}>
+      <div className={styles.menu} onClick={this.openMenu.bind(this)} style={{ display: this.state.hidden ? 'none' : 'inline-block' }}>
         <HamburgerMenu
           isOpen={this.state.menuOpen}
           menuClicked={this.openMenu.bind(this)}

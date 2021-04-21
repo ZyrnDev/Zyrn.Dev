@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useMediaQuery } from "react-responsive";
 import Layout, { name } from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date';
@@ -24,18 +25,36 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData }) {
+  const shouldUse64rem = useMediaQuery({ minWidth: '76rem' });
+  const shouldUse50rem = useMediaQuery({ minWidth: '62rem' });
+  const shouldUse42rem = useMediaQuery({ minWidth: '50rem' });
+  const shouldUse36rem = useMediaQuery({ minWidth: '44rem' });
+
   let meta = {
     title: postData.title,
     description: "An article about my projects working called '" + postData.title + "'.",
     //image: "/images/pfp.webp",
   };
+
+  let width;
+  if (shouldUse64rem) {
+    width = "64rem"
+  } else if (shouldUse50rem) {
+    width = "50rem"
+  } else if (shouldUse42rem) {
+    width = "42rem"
+  } else if (shouldUse36rem) {
+    width = "36rem"
+  } else {
+    width = "30rem"
+  }
   return (
-    <Layout meta={meta}>
+    <Layout meta={meta} maxWidth={width}>
       <Head>
         <title>{postData.title}</title>
       </Head>
 
-      <header className={layoutStyles.header}>
+      {/* <header className={layoutStyles.header}>
         <Link href="/blog">
           <a>
             <img
@@ -50,7 +69,7 @@ export default function Post({ postData }) {
             <a className={utilStyles.colorInherit}>{name}</a>
           </Link>
         </h2>
-      </header>
+      </header> */}
 
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>

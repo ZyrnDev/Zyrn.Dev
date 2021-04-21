@@ -1,5 +1,5 @@
 .menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 
@@ -8,8 +8,8 @@
     border-right: 1px solid rgba(245, 245, 245, 0.8);
     border-bottom-right-radius: 2em;
     z-index: 1;
-    background-color: rgb(47, 79, 79);
-    /* background-color: black; */
+    /* background-color: rgb(47, 79, 79); */
+    background-color: hsl(240, 5%, 20%);
 
     transition: 0.3s;
     

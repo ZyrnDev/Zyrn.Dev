@@ -17,7 +17,7 @@ export async function getStaticProps() {
 
 export default function Home({ firstPosts }) {
   let meta = {
-    title: "Zyrn / Mitchell Lee's Home",
+    title: "Mitchell 'Zyrn' Lee's Home",
     description: "The home for Mitchell 'Zyrn' Lee. A passionate software developer with over a decade of experience.",
     //image: "/images/pfp.webp",
   };

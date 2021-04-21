@@ -3,28 +3,28 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import Head from 'next/head';
 import Menu from '../components/menu';
+import { max } from 'date-fns';
 
 export const name = 'Mitchell Lee'
 export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
 
-export default function Layout({ children, meta, home }) {
-  meta = meta || {};
+export default function Layout({ children, meta, home, maxWidth = '36rem' }) {
   return (
     <>
       <Menu/>
-      <div className={styles.container}>
+      <div className={`${styles.container}`} style={{ maxWidth: maxWidth }}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
-          <meta name="og:title" content={ meta.title || "Mitchell Lee | Zyrn.Dev" } />
-          <meta name="description" content={ meta.description || "The home for Mitchell 'Zyrn' Lee. A passionate software developer." } />
-          <meta property="og:image" content={ meta.image || "/images/pfp.webp" } />
-          <meta name="twitter:card" content="summary_large_image" />
+          { meta?.title && (<meta name="og:title" content={ meta.title } />) }
+          { meta?.description && (<meta name="description" content={ meta.description } />) }
+          { meta?.image && (<meta property="og:image" content={ meta.image } />) }
+          { meta && (<meta name="twitter:card" content="summary_large_image" />) }
         </Head>
         <header className={styles.header}>
           {home && (
             <>
               <img
-                src="/images/pfp.webp"
+                src="/images/me.png"
                 className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                 alt={name}
               />

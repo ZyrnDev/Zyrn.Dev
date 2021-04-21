@@ -2,7 +2,8 @@
     position: relative;
     height: 100%;
     font-family: sans-serif;
-    background-color: rgb(35, 65, 65);
+    /* background-color: rgb(35, 65, 65); */
+    background-color: hsl(240, 5%, 15%);
 }
   
 .menu-item {
