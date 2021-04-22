@@ -8,11 +8,12 @@ import { max } from 'date-fns';
 export const name = 'Mitchell Lee'
 export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
 
-export default function Layout({ children, meta, home, maxWidth = '36rem' }) {
+export default function Layout({ children, meta, home, style = { maxWidth: '36rem' }, className = "" }) {
+  console.log(className)
   return (
     <>
       <Menu/>
-      <div className={`${styles.container}`} style={{ maxWidth: maxWidth }}>
+      <div className={`${styles.container} ${className}`} style={style}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
           { meta?.title && (<meta name="og:title" content={ meta.title } />) }

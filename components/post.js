@@ -3,35 +3,18 @@ import Link from 'next/link';
 import { useMediaQuery } from "react-responsive";
 import Layout from './layout';
 import Date from './date';
+import styles from "./post.module.css";
 import utilStyles from '../styles/utils.module.css';
 
 export default function Post({ postData, isUnreleased = false }) {
-  const shouldUse64rem = useMediaQuery({ minWidth: '76rem' });
-  const shouldUse50rem = useMediaQuery({ minWidth: '62rem' });
-  const shouldUse42rem = useMediaQuery({ minWidth: '50rem' });
-  const shouldUse36rem = useMediaQuery({ minWidth: '44rem' });
-
   let meta = {
     title: postData.title,
     description: "An article about my projects working called '" + postData.title + "'.",
     //image: "/images/pfp.webp",
   };
 
-  let width;
-  if (shouldUse64rem) {
-    width = "64rem"
-  } else if (shouldUse50rem) {
-    width = "50rem"
-  } else if (shouldUse42rem) {
-    width = "42rem"
-  } else if (shouldUse36rem) {
-    width = "36rem"
-  } else {
-    width = "30rem"
-  }
-
   return (
-    <Layout meta={meta} maxWidth={width}>
+    <Layout meta={meta} style={{}} className={styles.body}>
       <Head>
         <title>{postData.title}</title>
       </Head>
