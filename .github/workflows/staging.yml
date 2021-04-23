@@ -21,7 +21,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     name: Build & Test
-    environment: Production
+    environment: Staging
     # The type of runner that the job will run on
     runs-on: self-hosted
 
@@ -56,6 +56,7 @@ jobs:
           
   deploy:
     name: Deploy
+    environment: Staging
     needs: build
     # The type of runner that the job will run on
     runs-on: self-hosted
@@ -69,4 +70,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: cd ${{ secrets.STAGING_PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/development && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.STAGING_SERVICE_NAME }}
+          script: cd ${{ secrets.PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/development && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}
