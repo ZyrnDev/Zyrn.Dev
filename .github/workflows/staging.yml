@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Production CI/CD
+name: Staging CI
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ staging ]
   pull_request:
-    branches: [ master ]
+    branches: [ staging ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -69,4 +69,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: cd ${{ secrets.PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/master && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}
+          script: cd ${{ secrets.STAGING_PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/development && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.STAGING_SERVICE_NAME }}
