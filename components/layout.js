@@ -9,7 +9,6 @@ export const name = 'Mitchell Lee'
 export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
 
 export default function Layout({ children, meta, home, style = { maxWidth: '36rem' }, className = "" }) {
-  console.log(className)
   return (
     <>
       <Menu/>
