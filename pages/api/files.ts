@@ -1,3 +1,4 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable from 'formidable';
 
 const KILOBYTE = 1024;
@@ -17,7 +18,7 @@ interface Form extends formidable {
     hash?: string | 'sha1' | 'md5' | 'sha256' | null,
 }
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
     const form: Form  = new formidable.IncomingForm();
     form.uploadDir = './public/uploads/';
     form.maxFileSize = 5 * GIGABYTE;

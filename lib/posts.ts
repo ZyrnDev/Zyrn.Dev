@@ -13,7 +13,11 @@ export interface PostMetaData {
   title: string
 }
 
-export function getSortedPostsData(unreleased = false) {
+export interface PostData extends PostMetaData {
+  contentHtml: string
+}
+
+export function getSortedPostsData(unreleased = false): PostMetaData[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory).filter( (value, index, array) => { return (unreleased ? /\.md.unreleased$/ : /\.md$/).test(value) } )
   const allPostsData = fileNames.map(fileName => {
@@ -28,7 +32,7 @@ export function getSortedPostsData(unreleased = false) {
     const matterResult = matter(fileContents)
 
     // Combine the data with the id
-    return {
+    return <PostMetaData> {
       id,
       ...matterResult.data
     }
@@ -56,7 +60,7 @@ export function getAllPostIds(unreleased = false) {
   })
 }
 
-export async function getPostData(id, unreleased = false) {
+export async function getPostData(id: string, unreleased: boolean = false) {
   const fullPath = path.join(postsDirectory, (unreleased ? `${id}.md.unreleased` : `${id}.md`))
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
@@ -71,9 +75,9 @@ export async function getPostData(id, unreleased = false) {
   const contentHtml = processedContent.toString()
 
   // Combine the data with the id and contentHtml
-  return {
+  return <PostData> {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string })
+    ...matterResult.data
   }
 }

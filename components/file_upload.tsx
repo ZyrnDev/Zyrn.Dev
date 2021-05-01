@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, Component, FormEventHandler } from 'react';
 import axios from 'axios';
 import styles from './file_upload.module.css';
 
-interface IProps {
-  file: any,
-  filename: string,
+interface IState {
+  file?: any,
+  filename?: string,
 }
 
-class FileUpload extends Component<IProps> {
-    state: IProps
+interface IProps {
+
+}
+
+class FileUpload extends Component<IState, IProps> {
+    state: IState
     
     constructor(props: IProps) {
         super(props);
@@ -23,13 +27,13 @@ class FileUpload extends Component<IProps> {
         this.fileUpload = this.fileUpload.bind(this);
     }
 
-    onFormSubmit(event){
+    onFormSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault() // Stop form submit
         this.fileUpload(this.state.file);
     }
 
-    onChange(event) {
-      if (event.target.files[0]) {
+    onChange(event: ChangeEvent<HTMLInputElement>) {
+      if (event.target.files?.length) {
         this.setState({ file: event.target.files[0] });
         this.setState({ filename: event.target.files[0].name });
       } else {
@@ -37,7 +41,7 @@ class FileUpload extends Component<IProps> {
       }
     }
 
-    fileUpload(file){
+    fileUpload(file: File){
         const url = '/api/files';
         const config = { headers: { 'content-type': 'multipart/form-data' } };
         const fileName = this.state.filename;

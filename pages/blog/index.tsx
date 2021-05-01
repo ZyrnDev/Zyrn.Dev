@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Posts from '../../components/posts';
-import { getSortedPostsData } from '../../lib/posts';
+import { getSortedPostsData, PostMetaData } from '../../lib/posts';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPostsData = await getSortedPostsData()
@@ -11,6 +11,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default function Blog({ allPostsData }) {
+export default function Blog({ allPostsData }: { allPostsData: PostMetaData[] }) {
   return (<Posts allPostsData={allPostsData}></Posts>)
 }
