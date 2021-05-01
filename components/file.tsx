@@ -1,20 +1,20 @@
 import styles from './file.module.css';
 
-function byteUnits(bytes) {
+function byteUnits(bytes: number) {
   let value = bytes;
   let units= ['B', 'KB', 'MB', 'GB', 'TB'];
   for (let i = 0; i < units.length; i++) {
     if (value / 1024 > 1) {
       value = value / 1024;
     } else {
-      return (value.round(2) + units[i]);
+      return (round(value, 2) + units[i]);
     }
   }
-  return (value.round(2) + units[units.length - 1])
+  return (round(value, 2) + units[units.length - 1])
 }
 
-Number.prototype.round = function(places) {
-  return +(Math.round(this + "e+" + places)  + "e-" + places);
+function round(num: number | Number, places: number) {
+    return +(Math.round(Number.parseFloat(num + "e+" + places))  + "e-" + places);
 }
 
 export default function File({ file }) {
