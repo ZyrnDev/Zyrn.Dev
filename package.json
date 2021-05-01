@@ -9,6 +9,7 @@
     "start:staging": "next start -p 3001"
   },
   "dependencies": {
+    "@types/react-responsive": "^8.0.2",
     "axios": "^0.21.1",
     "cheeseburger-menu": "0.0.13",
     "date-fns": "^2.11.1",

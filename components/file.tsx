@@ -1,4 +1,9 @@
 import styles from './file.module.css';
+import fs from "fs";
+
+export interface File extends Omit<fs.Stats, "isFile"|"isDirectory"|"isBlockDevice"|"isCharacterDevice"|"isFIFIO"|"isSocket"> {
+  name: string,
+}
 
 function byteUnits(bytes: number) {
   let value = bytes;
@@ -17,7 +22,7 @@ function round(num: number | Number, places: number) {
     return +(Math.round(Number.parseFloat(num + "e+" + places))  + "e-" + places);
 }
 
-export default function File({ file }) {
+export default function File({ file }: { file: File}) {
   return (
     <>
       <div key={file.name} className={styles.file}>

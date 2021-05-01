@@ -1,9 +1,9 @@
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import { getAllPostIds, getPostData, PostData } from '../../lib/posts';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Post from '../../components/post';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string)
+  const postData = await getPostData(params?.id as string)
   return {
     props: {
       postData
@@ -19,6 +19,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default function Render({ postData }) {
+export default function Render({ postData }: { postData: PostData }) {
   return (<Post postData={postData}></Post>)
 }

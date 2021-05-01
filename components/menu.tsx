@@ -4,16 +4,19 @@ import HamburgerMenu from 'react-hamburger-menu';
 import MenuContent from './menuContent';
 import styles from './menu.module.css';
 
-interface Props {
+interface IState {
   menuOpen: boolean,
   hidden: boolean,
   lastPosition: number,
 }
 
-class Menu extends Component {
-  state: Props
+interface IProps {
 
-  constructor(props) {
+}
+
+class Menu extends Component<IProps, IState> {
+
+  constructor(props: IProps) {
     super(props)
 
     this.state = {
@@ -31,7 +34,7 @@ class Menu extends Component {
     window.removeEventListener('scroll', this.handleScroll.bind(this));
   }
 
-  handleScroll(event) {
+  handleScroll(event: Event) {
       // let currentPosition = window.scrollY;
       // if (currentPosition > this.state.lastPosition) {
       //   this.setState({hidden: false});
