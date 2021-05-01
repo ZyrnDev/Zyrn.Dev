@@ -1,11 +1,12 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Date from '../components/date';
-import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
+import Head from 'next/head'
+import Layout, { siteTitle } from '../components/layout'
+import utilStyles from '../styles/utils.module.css'
+import { getSortedPostsData, PostMetaData } from '../lib/posts'
+import Link from 'next/link'
+import Date from '../components/date'
+import { GetStaticProps } from 'next'
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
   const firstPosts = allPostsData.slice(0, 5);
   return {
@@ -15,8 +16,10 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ firstPosts }) {
-  let meta = {
+export default function Home({ firstPosts }: {
+  firstPosts: PostMetaData[]
+}) {
+  const meta = {
     title: "Mitchell 'Zyrn' Lee's Home",
     description: "The home for Mitchell 'Zyrn' Lee. A passionate software developer with over a decade of experience.",
     //image: "/images/pfp.webp",

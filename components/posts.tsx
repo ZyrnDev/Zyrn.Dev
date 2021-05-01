@@ -4,8 +4,17 @@ import { useMediaQuery } from "react-responsive";
 import Date from './date';
 import Layout from './layout';
 import utilStyles from '../styles/utils.module.css';
+import { PostMetaData } from "../lib/posts"
 
-function BlogPosts({ allPostsData, style, isUnreleased = false }) {
+function BlogPosts({
+  allPostsData,
+  style,
+  isUnreleased = false
+}: {
+  allPostsData: PostMetaData[],
+  style: React.CSSProperties,
+  isUnreleased?: boolean,
+}) {
   return (
     <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`} style={style}>
       <h2 className={utilStyles.headingLg}>All Blog Posts</h2>
@@ -28,7 +37,13 @@ function BlogPosts({ allPostsData, style, isUnreleased = false }) {
   )
 }
     
-export default function Posts({ allPostsData, isUnreleased = false }) {
+export default function Posts({
+  allPostsData,
+  isUnreleased = false
+}: {
+  allPostsData: PostMetaData[],
+  isUnreleased?: boolean,
+}) {
     let meta = {
         title: "Mitchell 'Zyrn' Lee's Blog",
         description: "A place where Mitchell 'Zyrn' Lee talks about his recent projects.",
@@ -36,7 +51,7 @@ export default function Posts({ allPostsData, isUnreleased = false }) {
     };
     const shouldBe2Cols = useMediaQuery({ minWidth: '40rem' });
     return (
-      <Layout meta={meta} maxWidth='42rem'>
+      <Layout meta={meta} /* style={{ maxWidth: '42rem' }} */>
         <Head>
           <title>Blog | Zyrn.Dev</title>
         </Head>

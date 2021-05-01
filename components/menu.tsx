@@ -4,7 +4,15 @@ import HamburgerMenu from 'react-hamburger-menu';
 import MenuContent from './menuContent';
 import styles from './menu.module.css';
 
+interface Props {
+  menuOpen: boolean,
+  hidden: boolean,
+  lastPosition: number,
+}
+
 class Menu extends Component {
+  state: Props
+
   constructor(props) {
     super(props)
 
