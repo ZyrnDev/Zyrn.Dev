@@ -2,24 +2,30 @@ import React, { Component } from 'react'
 import Link from 'next/link';
 import styles from './menuContent.module.css';
 
-class MenuContent extends Component {
-  constructor(props) {
-    super(props)
+interface IProps {
+  closeCallback: () => void,
+  menuLinks: { name: string, path: string }[],
+}
 
-    this.menuLinks = [
+class MenuContent extends Component<IProps> {
+  static defaultProps = {
+    menuLinks: [
       { name: 'Home', path: "/" },
       { name: 'Blog', path: "/blog" },
       // { name: 'Files', path: "/files" },
       { name: 'Contact', path: "/contact" },
       // { name: 'Test', path: "/test" },
-    ];
+    ]
+  }
 
+  constructor(props: IProps) {
+    super(props)
   }
 
   render() {
     return (
       <div className={styles.menu}>
-        {this.menuLinks.map(link => <div className={styles['menu-item']} key={link.name}>
+        {this.props.menuLinks.map(link => <div className={styles['menu-item']} key={link.name}>
           <Link href={link.path}>
             <a onClick={this.props.closeCallback}>
               {link.name}

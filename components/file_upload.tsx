@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
 import styles from './file_upload.module.css';
 
-class FileUpload extends Component {
-    constructor(props) {
+interface IProps {
+  file: any,
+  filename: string,
+}
+
+class FileUpload extends Component<IProps> {
+    state: IProps
+    
+    constructor(props: IProps) {
         super(props);
 
         this.state = {
@@ -41,15 +47,11 @@ class FileUpload extends Component {
   
         let request = axios.post(url, formData, config);
 
-        NotificationManager.info("Upload Started", fileName);
-
         request.then((response) => {
             console.log(response.data);
-            NotificationManager.success("Uploaded Successfully", fileName);
         })
         .catch(error => {
             console.log(error.response);
-            NotificationManager.error("Upload Failed", fileName);
         });
     }
     
@@ -65,7 +67,6 @@ class FileUpload extends Component {
           </form>
           <link rel="stylesheet" type="text/css" href="/css/notifications.css"></link>
           <script src="https://kit.fontawesome.com/4ccef4426b.js" crossOrigin="anonymous"></script>
-          <NotificationContainer/>
         </>
       )
     }

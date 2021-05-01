@@ -10,8 +10,15 @@ export const config = {
     },
 };
 
+interface Form extends formidable {
+    uploadDir?: string,
+    maxFileSize?: number,
+    keepExtensions?: boolean,
+    hash?: string | 'sha1' | 'md5' | 'sha256' | null,
+}
+
 export default async (req, res) => {
-    const form = new formidable.IncomingForm();
+    const form: Form  = new formidable.IncomingForm();
     form.uploadDir = './public/uploads/';
     form.maxFileSize = 5 * GIGABYTE;
     form.keepExtensions = true;
@@ -22,6 +29,7 @@ export default async (req, res) => {
             file.path = form.uploadDir + file.name;
         }
     });
+    
 
     form.parse(req, (err, fields, files) => {
         // console.log(err, fields, files);
@@ -29,7 +37,8 @@ export default async (req, res) => {
             res.status(500).json({ error: err });
         } else {
             let fileArr = [];
-            for (const file of Object.values(files)) {
+            const iterable_files = <formidable.File[]> Object.values(files);
+            for (const file of iterable_files) {
                 fileArr.push({
                     name: file.name,
                     size: file.size,

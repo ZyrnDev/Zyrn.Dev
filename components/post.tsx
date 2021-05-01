@@ -6,7 +6,17 @@ import Date from './date';
 import styles from "./post.module.css";
 import utilStyles from '../styles/utils.module.css';
 
-export default function Post({ postData, isUnreleased = false }) {
+export default function Post({
+  postData,
+  isUnreleased = false
+}: {
+  postData: {
+    title: string
+    date: string
+    contentHtml: string
+  },
+  isUnreleased?: boolean
+}) {
   let meta = {
     title: postData.title,
     description: "An article about my projects working called '" + postData.title + "'.",
