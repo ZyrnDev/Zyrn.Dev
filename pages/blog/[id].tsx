@@ -1,6 +1,6 @@
-import { getAllPostIds, getPostData, PostData } from '../../lib/posts';
+import { getAllPostIds, getPostData, PostData } from '@lib/posts';
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Post from '../../components/post';
+import Post from '@components/post';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params?.id as string)

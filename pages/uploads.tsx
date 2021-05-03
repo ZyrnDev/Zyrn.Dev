@@ -1,6 +1,6 @@
-import Layout from "../components/layout";
-import FileDisplay, { File } from "../components/file";
-import utilStyles from '../styles/utils.module.css';
+import Layout from "@components/layout";
+import FileDisplay, { File } from "@components/file";
+import utilStyles from '@styles/utils.module.css';
 import Link from "next/link";
 import Head from "next/head";
 import fs from "fs";
