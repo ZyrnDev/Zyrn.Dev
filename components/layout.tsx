@@ -45,6 +45,7 @@ export default function Layout({
                 className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                 alt={name}
                 priority={true}
+                quality={"100%"}
                 width={144}
                 height={144}
               />
