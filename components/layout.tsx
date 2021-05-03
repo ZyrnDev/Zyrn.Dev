@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
-import Menu from '../components/menu';
+import utilStyles from '@styles/utils.module.css';
+import Menu from '@components/menu';
 
 export const name = 'Mitchell Lee'
 export const siteTitle = 'Mitchell Lee | Zyrn.Dev'

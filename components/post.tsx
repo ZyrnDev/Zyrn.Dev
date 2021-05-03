@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import Layout from './layout';
 import Date from './date';
 import styles from "./post.module.css";
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '@styles/utils.module.css';
 
 export default function Post({
   postData,

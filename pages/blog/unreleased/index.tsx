@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
-import Posts from '../../../components/posts';
-import { getSortedPostsData, PostMetaData } from '../../../lib/posts';
+import Posts from '@components/posts';
+import { getSortedPostsData, PostMetaData } from '@lib/posts';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPostsData = await getSortedPostsData(true)

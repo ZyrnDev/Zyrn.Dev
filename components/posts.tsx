@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useMediaQuery } from "react-responsive";
 import Date from './date';
 import Layout from './layout';
-import utilStyles from '../styles/utils.module.css';
-import { PostMetaData } from "../lib/posts"
+import utilStyles from '@styles/utils.module.css';
+import { PostMetaData } from "@lib/posts"
 
 function BlogPosts({
   allPostsData,
