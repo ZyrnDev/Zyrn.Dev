@@ -41,10 +41,10 @@ export default function Layout({
           {home && (
             <>
               <Image
-                priority
                 src="/images/me.png"
                 className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                 alt={name}
+                priority={true}
                 width={144}
                 height={144}
               />
