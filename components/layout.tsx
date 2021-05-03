@@ -41,7 +41,7 @@ export default function Layout({
           {home && (
             <>
               <Image
-                src="/images/me.png"
+                src="/images/me.webp"
                 className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                 alt={name}
                 priority={true}
