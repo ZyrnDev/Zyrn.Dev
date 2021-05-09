@@ -21,6 +21,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const Render: FC<{ postData: PostData }> = ({ postData }) => {
-  return (<Post postData={postData}></Post>)
+  return <Post postData={postData} />
 }
 export default Render;

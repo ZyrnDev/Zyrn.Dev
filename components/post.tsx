@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Layout from './layout';
 import Date from './date';
@@ -8,8 +7,7 @@ import utilStyles from '@styles/utils.module.css';
 
 const Post: FC<{ postData: { title: string, date: string, contentHtml: string }, isUnreleased?: boolean }> = ({ postData, isUnreleased = false }) => {
   return (
-    <Layout meta={{ title: postData.title, description: "An article about my projects working called '" + postData.title + "'." }} style={{}} className={styles.body}>
-      <Head> <title>{postData.title}</title> </Head>
+    <Layout title={postData.title + " | Zyrn.Dev"} meta={{ title: postData.title, description: "An article about my projects working called '" + postData.title + "'." }} style={{}} className={styles.body}>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
@@ -19,7 +17,7 @@ const Post: FC<{ postData: { title: string, date: string, contentHtml: string },
       </article>
 
       <div>
-        <Link href={!isUnreleased ? "/blog" :"/blog/unreleased"}><a>← Back to blog</a> </Link>
+        <Link href={!isUnreleased ? "/blog" : "/blog/unreleased"}><a>← Back to blog</a></Link>
       </div>
     </Layout>
   )
