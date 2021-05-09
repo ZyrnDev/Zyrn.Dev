@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import styles from './file.module.css';
 import fs from "fs";
 
@@ -5,9 +6,10 @@ export interface File extends Omit<fs.Stats, "isFile"|"isDirectory"|"isBlockDevi
   name: string,
 }
 
+const units= ['B', 'KB', 'MB', 'GB', 'TB'];
+
 function byteUnits(bytes: number) {
   let value = bytes;
-  let units= ['B', 'KB', 'MB', 'GB', 'TB'];
   for (let i = 0; i < units.length; i++) {
     if (value / 1024 > 1) {
       value = value / 1024;
@@ -18,11 +20,11 @@ function byteUnits(bytes: number) {
   return (round(value, 2) + units[units.length - 1])
 }
 
-function round(num: number | Number, places: number) {
+function round(num: number | number, places: number): number {
     return +(Math.round(Number.parseFloat(num + "e+" + places))  + "e-" + places);
 }
 
-export default function File({ file }: { file: File}) {
+const File: FC<{file: File}> = ({ file }) => {
   return (
     <>
       <div key={file.name} className={styles.file}>
@@ -41,6 +43,6 @@ export default function File({ file }: { file: File}) {
       </div>
     </>
   );
-}
+};
 
-
+export default File;

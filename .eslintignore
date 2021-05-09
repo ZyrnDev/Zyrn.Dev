@@ -1,0 +1,8 @@
+.eslintrc.js
+
+node_modules
+.next
+.github
+
+posts
+public

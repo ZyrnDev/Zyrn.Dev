@@ -1,12 +1,12 @@
+import fs from "fs";
+import { FC } from "react";
+import Link from "next/link";
+import { GetServerSideProps } from "next"
 import Layout from "@components/layout";
 import FileDisplay, { File } from "@components/file";
 import utilStyles from '@styles/utils.module.css';
-import Link from "next/link";
-import Head from "next/head";
-import fs from "fs";
-import { GetServerSideProps, GetServerSidePropsContext } from "next"
 
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const files = await getFiles("./public/uploads");
   
   return {
@@ -27,17 +27,15 @@ async function getFiles(directory: string): Promise<File[]> {
   return await Promise.all(files);
 }
 
-export default function Uploads({ files }: { files: File[]}) {
-  let meta = {
-    title: "Mitchell 'Zyrn' Lee's File Server",
-    description: "A place where you can upload files to get around upload size restrictions.",
-    //image: "/images/pfp.webp",
-  };
+const meta = {
+  title: "Mitchell 'Zyrn' Lee's File Server",
+  description: "A place where you can upload files to get around upload size restrictions.",
+  //image: "/images/pfp.webp",
+};
+
+const Uploads: FC<{ files: File[]}> = ({ files }) => {
   return (
-    <Layout meta={meta}>
-      <Head>
-          <title>Uploads | Zyrn.Dev</title>
-      </Head>
+    <Layout title="Uploads | Zyrn.Dev" meta={meta}>
       <h1 className={utilStyles.heading2X1}>Uploads</h1>
       {files.map((file) => (
         <FileDisplay file={file}/>
@@ -51,4 +49,5 @@ export default function Uploads({ files }: { files: File[]}) {
       
     </Layout>
   );
-};
+}
+export default Uploads;

@@ -1,11 +1,13 @@
 declare module 'remark-html' {
-  const html: any
-  export default html
+  type Remark_HTML = remark.PartialRemarkOptions;
+  const html: Remark_HTML;
+  export default html;
 }
 
 declare module 'remark-prism' {
-  const prism: any
-  export default prism
+  type Remark_Prism = remark.PartialRemarkOptions;
+  const prism: Remark_Prism;
+  export default prism;
 }
 
 declare module 'cheeseburger-menu' { 
@@ -16,6 +18,7 @@ declare module 'cheeseburger-menu' {
   const CheeseburgerMenu: React.FC<IProps>
   export default CheeseburgerMenu
 }
+
 declare module 'react-hamburger-menu' {
   const IProps: {
     isOpen?: boolean,
