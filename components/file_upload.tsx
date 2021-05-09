@@ -1,15 +1,14 @@
-import React, { ChangeEvent, ChangeEventHandler, Component, FormEventHandler } from 'react';
+import React, { ChangeEvent, Component } from 'react';
 import axios from 'axios';
 import styles from './file_upload.module.css';
 
 interface IState {
-  file?: any,
+  file?: File,
   filename?: string,
 }
 
-interface IProps {
-
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface IProps {}
 
 class FileUpload extends Component<IState, IProps> {
     state: IState
@@ -18,7 +17,7 @@ class FileUpload extends Component<IState, IProps> {
         super(props);
 
         this.state = {
-          file: null,
+          file: undefined,
           filename: "Choose a File",
         }
 
@@ -27,12 +26,16 @@ class FileUpload extends Component<IState, IProps> {
         this.fileUpload = this.fileUpload.bind(this);
     }
 
-    onFormSubmit(event: React.FormEvent<HTMLFormElement>){
+    onFormSubmit(event: React.FormEvent<HTMLFormElement>): void {
         event.preventDefault() // Stop form submit
-        this.fileUpload(this.state.file);
+        const file = this.state.file;
+        if (!file) {
+          return;
+        }
+        this.fileUpload(file);
     }
 
-    onChange(event: ChangeEvent<HTMLInputElement>) {
+    onChange(event: ChangeEvent<HTMLInputElement>): void {
       if (event.target.files?.length) {
         this.setState({ file: event.target.files[0] });
         this.setState({ filename: event.target.files[0].name });
@@ -41,15 +44,15 @@ class FileUpload extends Component<IState, IProps> {
       }
     }
 
-    fileUpload(file: File){
+    fileUpload(file: File): void {
         const url = '/api/files';
         const config = { headers: { 'content-type': 'multipart/form-data' } };
-        const fileName = this.state.filename;
+        // const fileName = this.state.filename;
         const formData = new FormData();
         
         formData.append('file', file);
   
-        let request = axios.post(url, formData, config);
+        const request = axios.post(url, formData, config);
 
         request.then((response) => {
             console.log(response.data);
@@ -59,7 +62,7 @@ class FileUpload extends Component<IState, IProps> {
         });
     }
     
-    render() {
+    render(): JSX.Element {
       return (
         <>
           <form onSubmit={this.onFormSubmit} className={styles.form}>

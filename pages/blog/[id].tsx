@@ -1,5 +1,6 @@
-import { getAllPostIds, getPostData, PostData } from '@lib/posts';
+import { FC } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { getAllPostIds, getPostData, PostData } from '@lib/posts';
 import Post from '@components/post';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -19,6 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default function Render({ postData }: { postData: PostData }) {
-  return (<Post postData={postData}></Post>)
+const Render: FC<{ postData: PostData }> = ({ postData }) => {
+  return <Post postData={postData} />
 }
+export default Render;

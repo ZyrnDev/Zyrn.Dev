@@ -1,15 +1,17 @@
+import { FC } from "react";
 import Layout from "@components/layout";
 import Upload from "@components/file_upload";
 import utilStyles from '@styles/utils.module.css';
 import Link from "next/link";
 import Head from "next/head";
 
-export default function Files() {
-  let meta = {
-    title: "Mitchell 'Zyrn' Lee's File Server",
-    description: "A place where you can download files from your friends and family.",
-    //image: "/images/pfp.webp",
-  };
+const meta = {
+  title: "Mitchell 'Zyrn' Lee's File Server",
+  description: "A place where you can download files from your friends and family.",
+  //image: "/images/pfp.webp",
+};
+
+const Files: FC = () => {
   return (
     <Layout meta={meta}>
       <Head>
@@ -23,3 +25,4 @@ export default function Files() {
     </Layout>
   );
 };
+export default Files;

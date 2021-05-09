@@ -5,6 +5,6 @@ import '@styles/prism-okaidia.css';
 // import '@styles/prism-tomorrow.css';
 
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return <Component {...pageProps} />
 }

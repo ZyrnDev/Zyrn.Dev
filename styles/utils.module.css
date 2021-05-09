@@ -47,6 +47,10 @@
   margin: 0 0 1.25rem;
 }
 
+.listItem:last-child {
+  margin: 0;
+}
+
 
 .lightText {
   color: rgb(190, 190, 190);
