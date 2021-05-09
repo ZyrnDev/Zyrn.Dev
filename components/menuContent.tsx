@@ -1,4 +1,4 @@
-import React, { Component, FC } from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link';
 import styles from './menuContent.module.css';
 
@@ -9,7 +9,7 @@ const navigation_links = [
   { name: 'Contact', path: "/contact" },
   // { name: 'Test', path: "/test" },
 ];
-const MenuContent: FC<{ closeCallback: () => void, links: { name: string, path: string }[] }> = ({ closeCallback, links = navigation_links }) => {
+const MenuContent: FC<{ closeCallback: () => void, links?: { name: string, path: string }[] }> = ({ closeCallback, links = navigation_links }) => {
 
   return (
     <div className={styles.menu}>
