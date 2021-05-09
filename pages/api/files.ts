@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiHandler } from 'next'
 import formidable from 'formidable';
 
 const KILOBYTE = 1024;
@@ -11,42 +11,45 @@ export const config = {
     },
 };
 
-interface Form extends formidable {
-    uploadDir?: string,
-    maxFileSize?: number,
-    keepExtensions?: boolean,
-    hash?: string | 'sha1' | 'md5' | 'sha256' | null,
+class Form extends formidable.IncomingForm {
+    uploadDir?: string;
+    maxFileSize?: number;
+    keepExtensions?: boolean;
+    hash?: string | 'sha1' | 'md5' | 'sha256' | null;
+
+    constructor() {
+        super();
+        this.uploadDir = './public/uploads/';
+        this.maxFileSize = 5 * GIGABYTE;
+        this.keepExtensions = true;
+        this.hash = 'sha1';
+
+        const onFileBegin = (_name: string, file: formidable.File) => {
+            if (file.name) {
+                file.path = this.uploadDir + file.name;
+            }
+        }
+        this.on('fileBegin', onFileBegin.bind(this));
+    }
+
+    
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const form: Form  = new formidable.IncomingForm();
-    form.uploadDir = './public/uploads/';
-    form.maxFileSize = 5 * GIGABYTE;
-    form.keepExtensions = true;
-    form.hash = 'sha1';
+const handler: NextApiHandler = async (req, res) => {
+    const form = new Form();
 
-    form.on('fileBegin', (name, file) => {
-        if (file.name) {
-            file.path = form.uploadDir + file.name;
-        }
-    });
-    
-
-    form.parse(req, (err, fields, files) => {
-        // console.log(err, fields, files);
+    form.parse(req, (err, _fields, files) => {
         if (err) {
             res.status(500).json({ error: err });
         } else {
-            let fileArr = [];
+            const fileArr = [];
             const iterable_files = <formidable.File[]> Object.values(files);
             for (const file of iterable_files) {
-                fileArr.push({
-                    name: file.name,
-                    size: file.size,
-                    hash: file.hash
-                });
+                fileArr.push({ name: file.name, size: file.size, hash: file.hash });
             }
             res.status(200).json({file: fileArr});
         }
     });
 };
+
+export default handler;
