@@ -56,7 +56,7 @@ jobs:
       - id: "setup"
         name: "Setup"
         run: |
-          echo "${{ secrets.SSH_RSA_KEY }} > ssh_key.temp"
+          echo "${{ secrets.SSH_RSA_KEY }}" > ssh_key.temp
           chmod 600 ssh_key.temp
           echo "#!/bin/bash" > command.sh.temp
           echo "pwd" >> command.sh.temp
