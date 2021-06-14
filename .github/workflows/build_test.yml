@@ -49,3 +49,31 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+  test:
+    name: "Test"
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - id: "setup"
+        name: "Setup"
+        run: |
+          echo "${{ secrets.SSH_RSA_KEY }} > ssh_key.temp"
+          chmod 600 ssh_key.temp
+          echo "#!/bin/bash" > command.sh.temp
+          echo "pwd" >> command.sh.temp
+          echo "whoami" >> command.sh.temp
+
+      - id: "execute"
+        name: "Execute SSH Commands"
+        run: |
+          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp < command.sh.temp
+
+      - id: "cleanup"
+        name: "Cleanup"
+        run: |
+          rm ssh_key.temp command.sh.temp
+
+        # host: ${{ secrets.HOST }}
+        # username: ${{ secrets.USERNAME }}
+        # password: ${{ secrets.PASSWORD }}
+        # port: ${{ secrets.PORT }}
+        # script: cd ${{ secrets.PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/master && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}
