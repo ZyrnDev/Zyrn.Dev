@@ -52,14 +52,37 @@ jobs:
     name: Deploy
     environment: Staging
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: [ ubuntu-latest ]
 
-    steps:        
-      - name: Deploy to OVH
-        uses: zyrndev/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: cd ${{ secrets.PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/development && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}
+    steps:
+      - id: "setup"
+        name: "Setup"
+        run: |
+          echo "${{ secrets.SSH_RSA_KEY }}" > ssh_key.temp
+          chmod 600 ssh_key.temp
+          
+      - id: "deploy"
+        name: "Checkout New Version"
+        run: |
+          echo "#!/bin/bash" > command.sh.temp
+          echo "cd ${{ secrets.PROJECT_PATH }}" >> command.sh.temp
+          echo "sudo git fetch origin" >> command.sh.temp
+          echo "sudo git reset --hard origin/development" >> command.sh.temp
+          echo "sudo git pull" >> command.sh.temp
+          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp -o "StrictHostKeyChecking=no" < command.sh.temp
+          rm command.sh.temp
+
+      - id: "install"
+        name: "Checkout New Version"
+        run: |
+          echo "#!/bin/bash" > command.sh.temp
+          echo "cd ${{ secrets.PROJECT_PATH }}" >> command.sh.temp
+          echo "sudo npm install" >> command.sh.temp
+          echo "sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}" >> command.sh.temp
+          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp -o "StrictHostKeyChecking=no" < command.sh.temp
+          rm command.sh.temp
+
+      - id: "cleanup"
+        name: "Cleanup"
+        run: |
+          rm ssh_key.temp
