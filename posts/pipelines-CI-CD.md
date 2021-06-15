@@ -15,7 +15,7 @@ With a bit more work I was able to add build dependency caching and a simple dep
 
 Overall, I feel like while I have only taken another small dip into the DevOps world, I have learned a lot. This has encouraged me to try my hand are more things in this space. Potentially, I might setup a mock / staging server in the coming months.
 
-Until then keeping learning!
+Until then keep learning!
 
 
 [1]: https://github.com/features/actions "Github Actions Product Page"
