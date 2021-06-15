@@ -73,7 +73,7 @@ jobs:
           rm command.sh.temp
 
       - id: "install"
-        name: "Checkout New Version"
+        name: "Install / Deploy New Version"
         run: |
           echo "#!/bin/bash" > command.sh.temp
           echo "cd ${{ secrets.PROJECT_PATH }}" >> command.sh.temp
