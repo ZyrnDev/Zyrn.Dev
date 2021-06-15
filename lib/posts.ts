@@ -18,11 +18,13 @@ export interface PostData extends PostMetaData {
 }
 
 function getPostFileNames(unreleased = false) {
-  return fs.readdirSync(postsDirectory).filter( (value) => { return (unreleased ? /\.md.unreleased$/ : /\.md$/).test(value) } )
+  return fs.readdirSync(postsDirectory).filter( (value) => {
+    return (unreleased ? /\.unreleased.md$/ : /^((?!\.unreleased).)*\.md$/).test(value) // Some regex magic thanks to the gods of stackoverflow
+  });
 }
 
 function getPostDataByFileName(fileName: string, unreleased = false) {
-  const id = fileName.replace((unreleased ? /\.md.unreleased$/ : /\.md$/), '');
+  const id = fileName.replace((unreleased ? /\.unreleased.md$/ : /\.md$/), '');
   const fullPath = path.join(postsDirectory, fileName);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents); // Use gray-matter to parse the post metadata section
@@ -47,14 +49,14 @@ export function getAllPostIds(unreleased = false): { params: { id: string } }[] 
   return fileNames.map(fileName => {
     return {
       params: {
-        id: fileName.replace((unreleased ? /\.md.unreleased$/ : /\.md$/), '')
+        id: fileName.replace((unreleased ? /\.unreleased.md$/ : /\.md$/), '')
       }
     }
   })
 }
 
 export async function getPostData(id: string, unreleased = false): Promise<PostData> {
-  const fullPath = path.join(postsDirectory, (unreleased ? `${id}.md.unreleased` : `${id}.md`))
+  const fullPath = path.join(postsDirectory, (unreleased ? `${id}.unreleased.md` : `${id}.md`))
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section
