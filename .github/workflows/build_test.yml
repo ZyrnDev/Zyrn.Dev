@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -65,7 +64,7 @@ jobs:
       - id: "execute"
         name: "Execute SSH Commands"
         run: |
-          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp < command.sh.temp
+          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp -o "StrictHostKeyChecking=no" < command.sh.temp
 
       - id: "cleanup"
         name: "Cleanup"
