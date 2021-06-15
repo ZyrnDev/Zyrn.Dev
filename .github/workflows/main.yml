@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Production CI/CD
 
 # Controls when the action will run. 
@@ -16,18 +14,14 @@ on:
 env:
   NODE_VERSION: '10.x' 
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
     name: Build & Test
-    # environment: Production
-    # The type of runner that the job will run on
-    runs-on: self-hosted
+    environment: Production
+    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -58,16 +52,37 @@ jobs:
     name: Deploy
     environment: Production
     needs: build
-    # The type of runner that the job will run on
-    runs-on: self-hosted
+    runs-on: [ ubuntu-latest ]
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:        
-      - name: Deploy to OVH
-        uses: zyrndev/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: cd ${{ secrets.PROJECT_PATH }} && sudo git fetch origin && sudo git reset --hard origin/master && sudo git pull && sudo npm install && sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}
+    steps:
+      - id: "setup"
+        name: "Setup"
+        run: |
+          echo "${{ secrets.SSH_RSA_KEY }}" > ssh_key.temp
+          chmod 600 ssh_key.temp
+          
+      - id: "deploy"
+        name: "Checkout New Version"
+        run: |
+          echo "#!/bin/bash" > command.sh.temp
+          echo "cd ${{ secrets.PROJECT_PATH }}" >> command.sh.temp
+          echo "sudo git fetch origin" >> command.sh.temp
+          echo "sudo git reset --hard origin/master" >> command.sh.temp
+          echo "sudo git pull" >> command.sh.temp
+          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp -o "StrictHostKeyChecking=no" < command.sh.temp
+          rm command.sh.temp
+
+      - id: "install"
+        name: "Checkout New Version"
+        run: |
+          echo "#!/bin/bash" > command.sh.temp
+          echo "cd ${{ secrets.PROJECT_PATH }}" >> command.sh.temp
+          echo "sudo npm install" >> command.sh.temp
+          echo "sudo npm run build && sudo systemctl restart ${{ secrets.SERVICE_NAME }}" >> command.sh.temp
+          ssh ${{ secrets.HOST }} -p ${{ secrets.PORT }} -l ${{ secrets.USERNAME }} -i ssh_key.temp -o "StrictHostKeyChecking=no" < command.sh.temp
+          rm command.sh.temp
+
+      - id: "cleanup"
+        name: "Cleanup"
+        run: |
+          rm ssh_key.temp
