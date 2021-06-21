@@ -26,7 +26,7 @@ export const BlogPostList: FC<{ posts: PostMetaData[], style: React.CSSPropertie
       <h2 className={utilStyles.headingLg}>{isRecent ? "Recent Blog Posts" : "All Blog Posts"}</h2>
       <ul className={utilStyles.list}>
         {posts.map((post) => (
-          <BlogPostListEntry post={post} isUnreleased={isUnreleased}/>
+          <BlogPostListEntry post={post} isUnreleased={isUnreleased} key={post.id}/>
         ))}
       </ul>
       {isRecent && (

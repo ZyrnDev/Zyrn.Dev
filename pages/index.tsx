@@ -25,7 +25,7 @@ const Home: FC<{ firstPosts: PostMetaData[] }> = ({ firstPosts }) => {
   return (
     <Layout meta={meta} home>
       <section className={utilStyles.headingMd}>
-        <p style={{marginBottom: "0"}}>My name is Mitchell 'Zyrn' Lee and I am a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
+        <p style={{marginTop: "0.5em", marginBottom: "0"}}>My name is Mitchell 'Zyrn' Lee and I am a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
       </section>
       <BlogPostList posts={firstPosts} style={{}} isRecent={true}/>
     </Layout>
