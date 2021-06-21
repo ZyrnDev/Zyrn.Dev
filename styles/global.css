@@ -24,7 +24,30 @@ a:hover {
   text-decoration: underline;
 }
 
-/* img {
-  max-width: 100%;
-  display: block;
-} */
+table {
+  background: white;
+  border-radius: 16px;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-style: hidden; /* hide standard table (collapsed) border */
+  box-shadow: 0 0 0 1px whitesmoke; /* this draws the table border  */ 
+}
+
+tr, td, th {
+  border: 1px solid grey;
+}
+
+tr:nth-child(odd){background-color: hsl(240, 5%, 20%)}
+tr:nth-child(even){background-color: hsl(240, 5%, 17.5%)}
+
+td, th {
+  padding: 0.7em;
+}
+
+th {
+  background-color: hsl(240, 5%, 15%);
+}
+
+tr:hover {
+  background-color: hsl(240, 5%, 15%);
+}
