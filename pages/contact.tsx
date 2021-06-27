@@ -14,8 +14,10 @@ const ContactLink: FC<{ name: string, uri: string, text: string, isExternal: boo
 const contacts = [
   { name: "Email", uri: "mailto:mitch@zyrn.dev", text: "mitch@zyrn.dev", isExternal: true },
   { name: "Phone", uri: "tel:+61416684820", text: "+61 416 684 820", isExternal: true },
-  { name: "Website", uri: "/", text: "zyrn.dev", isExternal: false },
+  // { name: "Website", uri: "/", text: "zyrn.dev", isExternal: false },
   { name: "Github", uri: "https://github.com/ZyrnDev/", text: "github.com/ZyrnDev", isExternal: true },
+  { name: "Resume", uri: "/Mitchell_Lee_Resume.pdf", text: "pdf", isExternal: false },
+  { name: "LinkedIn", uri: "https://www.linkedin.com/in/mitchell-lee-488570183/", text: "Mitchell Lee", isExternal: true },
 ];
 
 const Contact: FC = () => {

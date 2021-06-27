@@ -24,7 +24,7 @@ Overall, I feel like while I have only taken another small dip into the DevOps w
 Until then keep learning!
 
 <style>
-    img {
+    article img {
         display: block;
         margin: auto;
         max-width: 100%;
