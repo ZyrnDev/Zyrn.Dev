@@ -6,7 +6,7 @@ import Meta, { MetaOptions } from "@components/meta";
 
 export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
 
-const Layout: FC<{ title?: string, meta?: MetaOptions, style?: React.CSSProperties, className?: string }> = ({ children, title = siteTitle, meta, style = { maxWidth: "36rem" }, className = "" }) => {
+const Layout: FC<{ title?: string, meta?: MetaOptions, style?: React.CSSProperties, className?: string }> = ({ children, title = siteTitle, meta, style = { maxWidth: "42rem" }, className = "" }) => {
   return (<>
     <Menu/>
     <div className={`${styles.container} ${className}`} style={style}>

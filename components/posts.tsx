@@ -42,6 +42,16 @@ const meta = {
   description: "A place where Mitchell 'Zyrn' Lee talks about his recent projects."
 };
 
+const AboutMe: FC = () => {
+  return (
+    <section className={`${utilStyles.headingMd} ${utilStyles.flexColumn} ${utilStyles.sticky}`} style={{ maxWidth: "30rem" , padding: '0.5rem' }}>
+      <h2 className={utilStyles.headingLg}>About Me</h2>
+      <p>My name is Mitchell 'Zyrn' Lee, and I am a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
+      <p>I am interested in low level systems programming, development operations, robust and scalable web applications as well as building simple, easy to use abstractions.</p>
+    </section>
+  )
+}
+
 const Posts: FC<{ posts: PostMetaData[], isUnreleased?: boolean }> = ({ posts, isUnreleased = false }) => {
   const shouldBe2Cols = useMediaQuery({ minWidth: '42rem' });
   return (
@@ -50,10 +60,7 @@ const Posts: FC<{ posts: PostMetaData[], isUnreleased?: boolean }> = ({ posts, i
         {shouldBe2Cols ? (
           <div className={utilStyles.flexGrid}>
             <BlogPostList posts={posts} isUnreleased={isUnreleased} style={{ maxWidth: "20rem" , padding: '0.5rem' }} />
-            <section className={`${utilStyles.headingMd} ${utilStyles.flexColumn} ${utilStyles.sticky}`} style={{ maxWidth: "30rem" , padding: '0.5rem' }}>
-              <h2 className={utilStyles.headingLg}>About Me</h2>
-              <p>My name is Mitchell 'Zyrn' Lee and I am a 3rd year software engineering student. I'm passionate about building software and have been doing just that for over a decade.</p>
-            </section>
+            <AboutMe />
           </div>
         ) : (
           <BlogPostList posts={posts} isUnreleased={isUnreleased} style={{ maxWidth: "20rem", margin: "auto" }} />
