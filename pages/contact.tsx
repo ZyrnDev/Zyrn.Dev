@@ -20,7 +20,7 @@ const contacts = [
 
 const Contact: FC = () => {
   return (
-    <Layout title="Contact | Zyrn.Dev" meta={{ title: "Contact Me", description: "How to contact me: Mitchell 'Zyrn' Lee" }} home>
+    <Layout title="Contact | Zyrn.Dev" meta={{ title: "Contact Me", description: "How to contact me: Mitchell 'Zyrn' Lee" }}>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Contact:</h2>
         <ul className={utilStyles.list}>
