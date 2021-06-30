@@ -1,17 +1,13 @@
-.menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    padding: 0.5em 1em 1em 0.5em;
-    border-bottom: 1px solid rgba(245, 245, 245, 0.8);
-    border-right: 1px solid rgba(245, 245, 245, 0.8);
-    border-bottom-right-radius: 2em;
-    z-index: 1;
-    /* background-color: rgb(47, 79, 79); */
-    background-color: hsl(240, 5%, 20%);
-
-    /* transition: 0.3s; */
-    
+.hamburger {
+    padding: 0em 0em 0em 0.5em;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100%;
+    /* z-index: 1; */
 }
-  
+
+.header {
+    height: 3rem;
+    background-color: hsl(240, 10%, 15%);
+}

@@ -14,14 +14,16 @@ const ContactLink: FC<{ name: string, uri: string, text: string, isExternal: boo
 const contacts = [
   { name: "Email", uri: "mailto:mitch@zyrn.dev", text: "mitch@zyrn.dev", isExternal: true },
   { name: "Phone", uri: "tel:+61416684820", text: "+61 416 684 820", isExternal: true },
-  { name: "Website", uri: "/", text: "zyrn.dev", isExternal: false },
+  // { name: "Website", uri: "/", text: "zyrn.dev", isExternal: false },
   { name: "Github", uri: "https://github.com/ZyrnDev/", text: "github.com/ZyrnDev", isExternal: true },
+  { name: "Resume", uri: "/Mitchell_Lee_Resume.pdf", text: "pdf", isExternal: false },
+  { name: "LinkedIn", uri: "https://www.linkedin.com/in/mitchell-lee-488570183/", text: "Mitchell Lee", isExternal: true },
 ];
 
 const Contact: FC = () => {
   return (
-    <Layout title="Contact | Zyrn.Dev" meta={{ title: "Contact Me", description: "How to contact me: Mitchell 'Zyrn' Lee" }} home>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+    <Layout title="Contact | Zyrn.Dev" meta={{ title: "Contact Me", description: "How to contact me: Mitchell 'Zyrn' Lee" }}>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} section`}>
         <h2 className={utilStyles.headingLg}>Contact:</h2>
         <ul className={utilStyles.list}>
           {contacts.map(({name, uri, text, isExternal}) => (<ContactLink name={name} uri={uri} text={text} isExternal={isExternal} />) )}
