@@ -31,6 +31,7 @@ const meta = {
   title: "Mitchell 'Zyrn' Lee's File Server",
   description: "A place where you can upload files to get around upload size restrictions.",
   //image: "/images/pfp.webp",
+  robots: "none",
 };
 
 const Uploads: FC<{ files: File[]}> = ({ files }) => {

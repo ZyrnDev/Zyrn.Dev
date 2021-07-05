@@ -9,6 +9,7 @@ const meta = {
   title: "Mitchell 'Zyrn' Lee's File Server",
   description: "A place where you can download files from your friends and family.",
   //image: "/images/pfp.webp",
+  robots: "none",
 };
 
 const Files: FC = () => {

@@ -5,11 +5,13 @@ export interface MetaOptions {
     title?: string,
     description?: string,
     image?: string,
+    robots?: string,
 }
 
 const Meta: FC<{ options?: MetaOptions }> = ({ options }) => {
     return (
         <Head>
+            <meta name="robots" content={options?.robots || "index, follow"} />
             { options?.title && (<meta name="og:title" content={ options.title } />) }
             { options?.description && (<meta name="description" content={ options.description } />) }
             { options?.image && (<meta property="og:image" content={ options.image } />) }

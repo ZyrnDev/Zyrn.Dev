@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /uploads/
+Disallow: /blog/unreleased/
+
+Sitemap: https://zyrn.dev/sitemap.xml
+Sitemap: https://www.zyrn.dev/sitemap.xml
