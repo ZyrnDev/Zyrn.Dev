@@ -17,7 +17,7 @@ const headers = async () => {
 };
 
 // eslint-disable-next-line max-lines-per-function, no-undef
-module.exports = (phase, { defaultConfig, isServer }) => {
+module.exports = (phase, { defaultConfig }) => {
     // const enviroment = process.env.NODE_ENV || "development";
 
     const baseConfig = {
