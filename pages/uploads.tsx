@@ -31,11 +31,12 @@ const meta = {
   title: "Mitchell 'Zyrn' Lee's File Server",
   description: "A place where you can upload files to get around upload size restrictions.",
   //image: "/images/pfp.webp",
+  robots: "none",
 };
 
 const Uploads: FC<{ files: File[]}> = ({ files }) => {
   return (
-    <Layout title="Uploads | Zyrn.Dev" meta={meta}>
+    <Layout title="Uploads" meta={meta}>
       <h1 className={utilStyles.heading2X1}>Uploads</h1>
       {files.map((file) => (
         <FileDisplay file={file}/>

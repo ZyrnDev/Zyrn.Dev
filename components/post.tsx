@@ -7,7 +7,7 @@ import utilStyles from '@styles/utils.module.css';
 
 const Post: FC<{ postData: { title: string, date: string, contentHtml: string }, isUnreleased?: boolean }> = ({ postData, isUnreleased = false }) => {
   return (
-    <Layout title={postData.title + " | Zyrn.Dev"} meta={{ title: postData.title, description: "An article about my recent projects working called '" + postData.title + "'." }} style={{}} className={styles.body}>
+    <Layout title={postData.title + " - Blog"} meta={{ title: postData.title, description: "An article about my recent projects working called '" + postData.title + "'." }} style={{}} className={styles.body}>
       <article className="section" style={{ margin: "1rem 0"}}>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
