@@ -4,7 +4,7 @@ import styles from './layout.module.css';
 import Menu from '@components/menu';
 import Meta, { MetaOptions } from "@components/meta";
 
-export const siteTitle = 'Mitchell Lee | Zyrn.Dev'
+export const siteTitle = 'Mitchell Lee'
 
 const Layout: FC<{ title?: string, meta?: MetaOptions, style?: React.CSSProperties, className?: string }> = ({ children, title = siteTitle, meta, style = { maxWidth: "42rem" }, className = "" }) => {
   return (<>
@@ -12,7 +12,7 @@ const Layout: FC<{ title?: string, meta?: MetaOptions, style?: React.CSSProperti
     <div className={`${styles.container} ${className}`} style={style}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        { title && (<title>{ title }</title>) }
+        { title && (<title>{ title + ' | Zyrn' }</title>) }
       </Head>
       <Meta options={meta} />
       <main>{children}</main>

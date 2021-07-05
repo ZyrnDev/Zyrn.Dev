@@ -25,6 +25,11 @@ module.exports = (phase, { defaultConfig }) => {
         poweredByHeader: false,
         reactStrictMode: true, // Good Practice apparently
         headers: headers,
+        webpack: (config, { isServer }) => {
+            // Fixes npm packages that depend on `fs` module
+            if (!isServer) config.node = { fs: 'empty' };
+            return config
+        }        
     };
 
     if (phase === PHASE_DEVELOPMENT_SERVER) {
