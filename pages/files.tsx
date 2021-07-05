@@ -13,10 +13,7 @@ const meta = {
 
 const Files: FC = () => {
   return (
-    <Layout meta={meta}>
-      <Head>
-          <title>Files | Zyrn.Dev</title>
-      </Head>
+    <Layout title="Files" meta={meta}>
       <h1 className={utilStyles.heading2X1}>Files</h1>
       <Upload/>
       <Link href="/uploads">

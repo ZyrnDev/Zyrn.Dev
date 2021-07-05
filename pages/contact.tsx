@@ -22,9 +22,9 @@ const contacts = [
 
 const Contact: FC = () => {
   return (
-    <Layout title="Contact | Zyrn.Dev" meta={{ title: "Contact Me", description: "How to contact me: Mitchell 'Zyrn' Lee" }}>
+    <Layout title="Contact" meta={{ title: "Contact Me:", description: "How to contact me: Mitchell 'Zyrn' Lee" }}>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} section`}>
-        <h2 className={utilStyles.headingLg}>Contact:</h2>
+        <h1 className={utilStyles.headingLg}>Contact:</h1>
         <ul className={utilStyles.list}>
           {contacts.map(({name, uri, text, isExternal}) => (<ContactLink name={name} uri={uri} text={text} isExternal={isExternal} />) )}
         </ul>

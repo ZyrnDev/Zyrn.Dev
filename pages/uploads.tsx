@@ -35,7 +35,7 @@ const meta = {
 
 const Uploads: FC<{ files: File[]}> = ({ files }) => {
   return (
-    <Layout title="Uploads | Zyrn.Dev" meta={meta}>
+    <Layout title="Uploads" meta={meta}>
       <h1 className={utilStyles.heading2X1}>Uploads</h1>
       {files.map((file) => (
         <FileDisplay file={file}/>
