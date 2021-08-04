@@ -1,9 +1,11 @@
-// const baseUrl = {
-//   test: "http://localhost:3000",
-//   development: "http://localhost:3000",
-//   staging: "https://staging.zyrn.dev",
-//   production: "https://zyrn.dev",
-// }[process.env.NODE_ENV];
+// Based on: https://maikelveen.com/blog/generate-a-sitemap-with-next-js-and-typescript
+
+const baseUrl = {
+  test: "http://localhost:3000",
+  development: "http://localhost:3000",
+  staging: "https://staging.zyrn.dev",
+  production: "https://zyrn.dev",
+}[process.env.NODE_ENV];
 
 import { GetServerSideProps } from 'next';
 import fs from 'fs';
@@ -33,13 +35,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const pagesPath = path.join(basePath + '/.next/server/pages/');
 
   const routes_manifest: Record<string, unknown> | null = readManifestFile(basePath);
-  // const host: string = baseUrl;
+  const host: string = baseUrl;
 
   let routes: Array<Url> = [];
-  routes = [...routes, ...getPathsFromManifest(routes_manifest, "https://zyrn.dev")];
-  routes = [...routes, ...getPathsFromManifest(routes_manifest, "https://www.zyrn.dev")];
-  routes = [...routes, ...getPathsFromBuildFolder(pagesPath, [], "https://zyrn.dev", pagesPath)];
-  routes = [...routes, ...getPathsFromBuildFolder(pagesPath, [], "https://www.zyrn.dev", pagesPath)];
+  routes = [...routes, ...getPathsFromManifest(routes_manifest, host)];
+  routes = [...routes, ...getPathsFromBuildFolder(pagesPath, [], host, pagesPath)];
   routes = routes.filter(excludeRoutes);
 
   const sitemap: string = getSitemapXml(routes);
