@@ -14,14 +14,14 @@ const MenuContent: FC<{ closeCallback: () => void, links?: { name: string, path:
     return (
       <nav className={styles.menuDesktop}>
         <MenuLink link={{ name: 'Home', path: "/" }} close={closeCallback}><img src="/favicon.ico" alt="Home Page Icon" style={{ width: '44px', height: '44px' }} /></MenuLink>
-        {links.map(link => <MenuLink link={link} close={closeCallback} />)}
+        {links.map((link, index) => <MenuLink key={index} link={link} close={closeCallback} />)}
       </nav>
     )
   }
   return (
     <nav className={styles.menuMobile}>
       <MenuLink link={{ name: 'Home', path: "/" }} close={closeCallback} mobile><img src="/favicon.ico" alt="Home Page Icon" style={{ display: "block", width: "44px", height: '44px', margin: "auto" }} /></MenuLink>
-      {links.map(link => <MenuLink link={link} close={closeCallback} mobile />)}
+      {links.map((link, index) => <MenuLink key={index} link={link} close={closeCallback} mobile />)}
       <div className={styles.hint}></div>
     </nav>
   )
