@@ -1,12 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /api
 Disallow: /api/
-Disallow: /files
-Disallow: /files/
-Disallow: /uploads
 Disallow: /uploads/
-Disallow: /blog/unreleased
 Disallow: /blog/unreleased/
 
 Sitemap: https://zyrn.dev/sitemap.xml
