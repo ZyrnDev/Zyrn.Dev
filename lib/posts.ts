@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
+import { remark } from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
 import prism from 'remark-prism';
@@ -24,16 +24,16 @@ function getPostFileNames(unreleased = false) {
   });
 }
 
-function getPostDataByFileName(fileName: string, unreleased = false) {
+function getPostDataByFileName(fileName: string, unreleased = false): PostMetaData {
   const id = fileName.replace((unreleased ? /\.unreleased.md$/ : /\.md$/), '');
   const fullPath = path.join(postsDirectory, fileName);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents); // Use gray-matter to parse the post metadata section
 
-  return <PostMetaData> {
+  return {
     id,
     ...matterResult.data
-  }
+  } as PostMetaData;
 }
 
 export function getSortedPostsData(unreleased = false): PostMetaData[] {
@@ -68,9 +68,9 @@ export async function getPostData(id: string, unreleased = false): Promise<PostD
   const contentHtml = processedContent.toString()
 
   // Combine the data with the id and contentHtml
-  return <PostData> {
+  return {
     id,
     contentHtml,
     ...matterResult.data
-  }
+  } as PostData;
 }
