@@ -1,3 +1,5 @@
+// @ts-check
+
 // eslint-disable-next-line no-undef, @typescript-eslint/no-var-requires
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 const infinite_cache = { key: "Cache-Control", value: "public, max-age=9999999999, must-revalidate", };
@@ -20,6 +22,9 @@ const headers = async () => {
 module.exports = (phase, { defaultConfig }) => {
     // const enviroment = process.env.NODE_ENV || "development";
 
+    /**
+     * @type {import('next').NextConfig}
+     **/
     const baseConfig = {
         ...defaultConfig,
         poweredByHeader: false,
