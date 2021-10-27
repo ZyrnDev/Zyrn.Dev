@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://zyrn.dev</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/contact</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/a-coding-season</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/a-fluttering-experience</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/all-the-little-projects</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/compilers-and-web-applications</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/migration</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/next.js-a-new-platform</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/pipelines-CI-CD</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/ray-tracing</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/say-what</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+<url><loc>https://zyrn.dev/blog/web-apps-in-a-box</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-10-27T03:14:02.645Z</lastmod></url>
+</urlset>

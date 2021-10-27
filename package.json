@@ -5,6 +5,7 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
+    "postbuild": "next-sitemap --config sitemap.js",
     "dev": "next dev",
     "test": "npm run lint",
     "start:staging": "next start -p 3001",
@@ -34,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
     "eslint": "^7.32.0",
+    "next-sitemap": "^1.6.192",
     "typescript": "^4.4.4"
   }
 }

@@ -1,8 +1,12 @@
+# *
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /uploads/
 Disallow: /blog/unreleased/
 
+# Host
+Host: https://zyrn.dev
+
+# Sitemaps
 Sitemap: https://zyrn.dev/sitemap.xml
-Sitemap: https://www.zyrn.dev/sitemap.xml
