@@ -43,7 +43,7 @@ const handler: NextApiHandler = async (req, res) => {
             res.status(500).json({ error: err });
         } else {
             const fileArr = [];
-            const iterable_files = <formidable.File[]> Object.values(files);
+            const iterable_files = Object.values(files) as formidable.File[];
             for (const file of iterable_files) {
                 fileArr.push({ name: file.name, size: file.size, hash: file.hash });
             }
