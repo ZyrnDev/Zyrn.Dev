@@ -64,7 +64,7 @@ export async function getPostData(id: string, unreleased = false): Promise<PostD
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark().use(html).use(gfm).use(prism).process(matterResult.content);
+  const processedContent = await remark().use(html, { sanitize: false }).use(gfm).use(prism).process(matterResult.content);
   const contentHtml = processedContent.toString()
 
   // Combine the data with the id and contentHtml
